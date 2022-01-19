@@ -7,19 +7,11 @@ import java.util.*;
 
 import javax.persistence.*;
 
-//@Data
-//@Entity
+@Data
+@Entity
 public class Audi extends BaseEntity {
 
 	public Audi(){
-	}
-
-	public Audi(UUID audiId, String audiName, AudiSize audiSize, AudiType audiType, Theater theater) {
-		this.audiId = audiId;
-		this.audiName = audiName;
-		this.audiSize = audiSize;
-		this.audiType = audiType;
-		this.theater = theater;
 	}
 
 	@Id
@@ -37,11 +29,11 @@ public class Audi extends BaseEntity {
 	private AudiType audiType;
 
 	@ManyToOne
+	@JoinTable( name = "theater_audi",
+			joinColumns = @JoinColumn(name = "audiId", referencedColumnName = "audiId"),
+			inverseJoinColumns = @JoinColumn(name = "theaterId", referencedColumnName = "theaterId"))
 	private Theater theater;
 
 	@OneToMany(mappedBy = "audi")
-	@JoinTable(name = "Audi_Movie_Screening",
-	joinColumns = @JoinColumn(name = "audi_id"),
-	inverseJoinColumns = @JoinColumn(name = "movie_screen_id"))
 	private Collection<MovieScreenTime> movieScreenTimes = new ArrayList<>();
 }

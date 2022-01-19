@@ -3,6 +3,8 @@ package org.rags.bookmyshow.entity;
 import lombok.Data;
 import org.hibernate.annotations.Type;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.UUID;
 
@@ -16,22 +18,20 @@ public class TheaterUser extends User{
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Type(type = "org.hibernate.type.UUIDCharType")
 	@Column(length = 36, columnDefinition = "varchar(36)", updatable = false, nullable = false)
-	private UUID userId;
+	private UUID theaterId;
 
 	private String password;
+
+
+	@ManyToOne()
+	@JoinColumn(name = "book_my_show_id",referencedColumnName = "bookMyShowAppId")
+	private BookMyShowApp bookMyShowApp;
 
 	public TheaterUser() {
 	}
 
-	public TheaterUser(String userName, String emaill, String phonenumber, UUID userId, String password) {
-		super(userName, emaill, phonenumber);
-		this.userId = userId;
-		this.password = password;
-	}
-
-	public TheaterUser(String userName, String emaill, String phonenumber, UUID userId, String password, BookMyShowApp bookMyShowApp) {
-		super(userName, emaill, phonenumber);
-		this.userId = userId;
+	public TheaterUser(String userName, String email, String phoneNumber, String password) {
+		super(userName, email, phoneNumber);
 		this.password = password;
 	}
 }

@@ -3,15 +3,16 @@ package org.rags.bookmyshow.entity;
 import lombok.Data;
 import org.hibernate.annotations.Type;
 
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 import javax.persistence.*;
 
-//@Data
-//@Entity
+@Data
+@Entity
 public class BookMyShowApp extends BaseEntity {
+
+	public BookMyShowApp() {
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,31 +21,15 @@ public class BookMyShowApp extends BaseEntity {
 	private UUID bookMyShowAppId;
 
 	@OneToMany(mappedBy = "bookMyShowApp")
-	@JoinColumn(name = "theaterId")
 	private List<Theater> theaterList;
 
 	@OneToMany(mappedBy = "bookMyShowApp")
-	@JoinColumn(name = "userId")
-	private List<User> userList;
+	private Collection<TheaterUser> theaterUsers = new ArrayList<>();
 
-	/*@OneToOne
-	@JoinColumn(name = "admin_user_id")
-	private AdminUser adminUser;
+	@OneToMany(mappedBy = "bookMyShowApp")
+	private Collection<CustomerUser> customerUsers = new ArrayList<>();
 
-	@OneToOne
-	@JoinColumn(name = "customer_user_id")
-	private CustomerUser customerUser;
+	@OneToMany(mappedBy = "bookMyShowApp")
+	private Collection<AdminUser> adminUsers = new ArrayList<>();
 
-	@OneToOne
-	@JoinColumn(name = "theater_user_id")
-	private TheaterUser theaterUser;*/
-
-	public BookMyShowApp() {
-	}
-
-	public BookMyShowApp(UUID bookMyShowAppId, List<Theater> theaterList, List<User> userList) {
-		this.bookMyShowAppId = bookMyShowAppId;
-		this.theaterList = theaterList;
-		this.userList = userList;
-	}
 }

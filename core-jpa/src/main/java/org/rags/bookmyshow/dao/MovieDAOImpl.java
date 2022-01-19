@@ -1,2 +1,5 @@
-package org.rags.bookmyshow.dao;public class MovieDAOImpl {
+package org.rags.bookmyshow.dao;
+
+public class MovieDAOImpl implements MovieDAO{
+
 }

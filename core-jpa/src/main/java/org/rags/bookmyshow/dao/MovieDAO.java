@@ -1,2 +1,4 @@
-package org.rags.bookmyshow.dao;public interface MovieDAO {
+package org.rags.bookmyshow.dao;
+
+public interface MovieDAO {
 }

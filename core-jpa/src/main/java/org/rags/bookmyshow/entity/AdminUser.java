@@ -9,8 +9,8 @@ import java.util.UUID;
 
 import javax.persistence.*;
 
-//@Data
-//@Entity
+@Data
+@Entity
 public class AdminUser extends User{
 
 	@Id
@@ -20,7 +20,9 @@ public class AdminUser extends User{
 	private UUID adminId;
 	private String password;
 
-
+	@ManyToOne()
+	@JoinColumn(name = "book_my_show_id")
+	private BookMyShowApp bookMyShowApp;
 
 	public AdminUser(){
 	}

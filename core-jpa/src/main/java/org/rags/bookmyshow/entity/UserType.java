@@ -1,2 +1,5 @@
-package org.rags.bookmyshow.entity;public enum UserType {
+package org.rags.bookmyshow.entity;
+
+public enum UserType {
+    ADMIN, CUSTOMER, THEATER
 }

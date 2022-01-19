@@ -10,8 +10,8 @@ import java.util.UUID;
 
 import javax.persistence.*;
 
-//@Data
-//@Entity
+@Data
+@Entity
 public class City extends BaseEntity {
 
 	@Id
@@ -24,10 +24,6 @@ public class City extends BaseEntity {
 	private Address address;
 
 	@OneToMany(mappedBy = "city")
-//	@JoinTable(name = "city_theater",
-//				joinColumns = @JoinColumn(columnDefinition = "city_id"),
-//				inverseJoinColumns = @JoinColumn(columnDefinition = "theater_id")
-//	)
 	private Collection<Theater> theaters = new ArrayList<>();
 
 	public City() {

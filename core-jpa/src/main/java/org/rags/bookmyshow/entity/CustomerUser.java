@@ -8,8 +8,8 @@ import java.util.UUID;
 
 import javax.persistence.*;
 
-//@Data
-//@Entity
+@Data
+@Entity
 public class CustomerUser extends User{
 
 	@Id
@@ -20,12 +20,15 @@ public class CustomerUser extends User{
 
 	private String password;
 
+	@ManyToOne()
+	@JoinColumn(name = "book_my_show_id")
+	private BookMyShowApp bookMyShowApp;
+
 	public CustomerUser() {
 	}
 
-	public CustomerUser(String userName, String emaill, String phonenumber, UUID customerId, String password) {
-		super(userName, emaill, phonenumber);
-		this.customerId = customerId;
+	public CustomerUser(String userName, String email, String phoneNumber, String password) {
+		super(userName, email, phoneNumber);
 		this.password = password;
 	}
 }

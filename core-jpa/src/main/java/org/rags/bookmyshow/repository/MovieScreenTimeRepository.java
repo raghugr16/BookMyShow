@@ -1,4 +1,9 @@
 package org.rags.bookmyshow.repository;
 
-public interface MovieScreenTimeRepository extends org.springframework.data.jpa.repository.JpaRepository<org.rags.bookmyshow.entity.MovieScreenTime, java.lang.Long> {
+import org.rags.bookmyshow.entity.MovieScreenTime;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.UUID;
+
+public interface MovieScreenTimeRepository extends JpaRepository<MovieScreenTime, UUID> {
 }

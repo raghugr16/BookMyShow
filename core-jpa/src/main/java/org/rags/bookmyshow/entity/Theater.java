@@ -7,32 +7,36 @@ import java.util.*;
 
 import javax.persistence.*;
 
-//@Data
-//@Entity
+@Data
+@Entity
 public class Theater extends BaseEntity {
 
-//	@Id
-//	@GeneratedValue(strategy = GenerationType.AUTO)
-//	@Type(type = "org.hibernate.type.UUIDCharType")
-//	@Column(length = 36, columnDefinition = "varchar(36)", updatable = false, nullable = false)
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Type(type = "org.hibernate.type.UUIDCharType")
+	@Column(length = 36, columnDefinition = "varchar(36)", updatable = false, nullable = false)
 	private UUID theaterId;
 
 	private String theaterName;
 
-//	@Enumerated(EnumType.STRING)
+	@Enumerated(EnumType.STRING)
 	private TheaterType theaterType;
 
-//	@OneToMany(mappedBy = "theater")
-//	@JoinTable( name = "Theater_audi",
-//				joinColumns = @JoinColumn(columnDefinition = "theater_id"),
-//				inverseJoinColumns = @JoinColumn(columnDefinition = "audi_id"))
-//	private Collection<Audi> audiList = new ArrayList<Audi>();
+	@OneToMany(mappedBy = "theater")
+	private Collection<Audi> audiList = new ArrayList<Audi>();
 
 	@ManyToOne
+	@JoinTable(name = "book_my_show_theater",
+			joinColumns = @JoinColumn(name = "theater_id", referencedColumnName = "theaterId"),
+			inverseJoinColumns = @JoinColumn(name = "book_my_show_app_Id", referencedColumnName = "bookMyShowAppId")
+	)
 	private BookMyShowApp bookMyShowApp;
 
 	@ManyToOne
-	@JoinColumn(columnDefinition = "city_id")
+	@JoinTable(name = "city_theater",
+			joinColumns = @JoinColumn(name = "theater_id", referencedColumnName = "theaterId"),
+			inverseJoinColumns = @JoinColumn(name = "city_id", referencedColumnName = "cityId")
+	)
 	private City city;
 
 	public Theater() {

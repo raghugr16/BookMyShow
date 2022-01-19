@@ -1,23 +1,21 @@
 package org.rags.bookmyshow.entity;
 
 import lombok.Data;
+import org.hibernate.annotations.Type;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
+import java.util.UUID;
+
 
 @MappedSuperclass
 @Data
 public abstract class User extends BaseEntity {
-	
+
 	private String userName;
 	private String email;
 	private String phoneNumber;
 
 	private UserType userType;
-
-	@ManyToOne()
-	private BookMyShowApp bookMyShowApp;
 
 	public User(){
 	}
