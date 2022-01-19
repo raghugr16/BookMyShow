@@ -1,4 +1,9 @@
 package org.rags.bookmyshow.repository;
 
-public interface BookMyShowAppRepository /*extends JpaRepository<BookMyShowApp, UUID>*/ {
+import org.rags.bookmyshow.entity.BookMyShowApp;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.UUID;
+
+public interface BookMyShowAppRepository extends JpaRepository<BookMyShowApp, UUID> {
 }

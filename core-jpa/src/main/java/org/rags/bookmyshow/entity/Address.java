@@ -7,8 +7,8 @@ import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
 import java.util.UUID;
 
-//@Data
-//@Embeddable
+@Data
+@Embeddable
 public class Address {
 
     @Column(name = "street_name")
