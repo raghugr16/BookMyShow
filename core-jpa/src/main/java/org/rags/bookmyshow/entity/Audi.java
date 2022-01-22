@@ -1,14 +1,17 @@
 package org.rags.bookmyshow.entity;
 
 import lombok.Data;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.Type;
 
-import java.util.*;
-
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.UUID;
 
 @Data
 @Entity
+@SuperBuilder
 public class Audi extends BaseEntity {
 
 	public Audi(){
@@ -28,12 +31,14 @@ public class Audi extends BaseEntity {
 	@Enumerated(EnumType.STRING)
 	private AudiType audiType;
 
+	private Integer no_of_seats;
+
 	@ManyToOne
 	@JoinTable( name = "theater_audi",
 			joinColumns = @JoinColumn(name = "audiId", referencedColumnName = "audiId"),
 			inverseJoinColumns = @JoinColumn(name = "theaterId", referencedColumnName = "theaterId"))
 	private Theater theater;
 
-	@OneToMany(mappedBy = "audi")
+	@OneToMany(mappedBy = "audi" , cascade = CascadeType.ALL)
 	private Collection<MovieScreenTime> movieScreenTimes = new ArrayList<>();
 }

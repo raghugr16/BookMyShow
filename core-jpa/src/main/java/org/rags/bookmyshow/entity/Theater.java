@@ -1,14 +1,18 @@
 package org.rags.bookmyshow.entity;
 
 import lombok.Data;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.Type;
 
-import java.util.*;
-
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.UUID;
 
 @Data
 @Entity
+@SuperBuilder
 public class Theater extends BaseEntity {
 
 	@Id
@@ -22,7 +26,7 @@ public class Theater extends BaseEntity {
 	@Enumerated(EnumType.STRING)
 	private TheaterType theaterType;
 
-	@OneToMany(mappedBy = "theater")
+	@OneToMany(mappedBy = "theater", cascade = CascadeType.ALL)
 	private Collection<Audi> audiList = new ArrayList<Audi>();
 
 	@ManyToOne
@@ -32,7 +36,7 @@ public class Theater extends BaseEntity {
 	)
 	private BookMyShowApp bookMyShowApp;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinTable(name = "city_theater",
 			joinColumns = @JoinColumn(name = "theater_id", referencedColumnName = "theaterId"),
 			inverseJoinColumns = @JoinColumn(name = "city_id", referencedColumnName = "cityId")

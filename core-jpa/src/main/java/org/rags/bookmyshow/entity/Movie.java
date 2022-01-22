@@ -1,14 +1,17 @@
 package org.rags.bookmyshow.entity;
 
 import lombok.Data;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.Type;
 
-import java.util.*;
-
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.UUID;
 
 @Data
 @Entity
+@SuperBuilder
 public class Movie extends BaseEntity {
 
 	public Movie() {

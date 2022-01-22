@@ -1,10 +1,7 @@
 package org.rags.bookmyshow.repository;
 
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.*;
 import org.rags.bookmyshow.entity.*;
 import org.rags.bookmyshow.stub.BaseBookMyShowStub;
 import org.slf4j.Logger;
@@ -13,29 +10,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.test.context.ActiveProfiles;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.UUID;
 
-@ActiveProfiles("dev")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @DataJpaTest
 @ComponentScan(basePackages = {"org.rags.bookmyshow"})
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-class AdminUserRepositoryTest extends BaseBookMyShowStub {
-    private static Logger logger = LoggerFactory.getLogger(AdminUserRepositoryTest.class.getName());
+class BookMyShowAppRepositoryTest extends BaseBookMyShowStub {
 
-    @Autowired
-    AdminUserRepository adminUserRepository;
+    private static Logger logger = LoggerFactory.getLogger(BookMyShowAppRepositoryTest.class.getName());
 
     @Autowired
     BookMyShowAppRepository bookMyShowAppRepository;
 
     @BeforeEach
     void setUp() {
+    }
 
+    @AfterEach
+    void tearDown() {
     }
 
     @Test
@@ -69,10 +64,6 @@ class AdminUserRepositoryTest extends BaseBookMyShowStub {
         Assertions.assertThat(saved.getTheaterList().size()).isEqualTo(3);
 
         logger.info("Total Theaters added = "+saved.getTheaterUsers().size());
-        UUID adminId = adminUsers.get(0).getAdminId();
-        Assertions.assertThat(adminUserRepository.findById(adminId)).isNotNull();
-        Assertions.assertThat(adminUserRepository.findById(adminId).toString()).isEqualTo(adminId.toString());
-
 
     }
 }

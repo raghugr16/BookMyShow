@@ -1,17 +1,17 @@
 package org.rags.bookmyshow.entity;
 
 import lombok.Data;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.Type;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
 import java.util.UUID;
-
-import javax.persistence.*;
 
 @Data
 @Entity
+@SuperBuilder
 public class City extends BaseEntity {
 
 	@Id
@@ -23,7 +23,7 @@ public class City extends BaseEntity {
 	@Embedded
 	private Address address;
 
-	@OneToMany(mappedBy = "city")
+	@OneToMany(mappedBy = "city", cascade = CascadeType.ALL)
 	private Collection<Theater> theaters = new ArrayList<>();
 
 	public City() {

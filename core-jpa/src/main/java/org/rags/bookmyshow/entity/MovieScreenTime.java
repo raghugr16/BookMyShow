@@ -40,6 +40,7 @@ public class MovieScreenTime extends BaseEntity {
 	private Date audiDate;
 	private Time audiStartTime;
 	private Time audiEndTime;
+	private String movie_screen_time;
 
 	@ManyToOne
 	@JoinTable(name = "audi_movie_screening",

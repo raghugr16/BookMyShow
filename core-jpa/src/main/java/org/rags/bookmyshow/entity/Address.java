@@ -1,14 +1,14 @@
 package org.rags.bookmyshow.entity;
 
+import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import javax.persistence.Embedded;
-import java.util.UUID;
 
 @Data
 @Embeddable
+@Builder
 public class Address {
 
     @Column(name = "street_name")

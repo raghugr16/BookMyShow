@@ -1,17 +1,15 @@
 package org.rags.bookmyshow.entity;
 
 import lombok.Data;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.Type;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
-import java.util.UUID;
-
 import javax.persistence.*;
+import java.util.UUID;
 
 @Data
 @Entity
+@SuperBuilder
 public class TheaterUser extends User{
 
 	@Id
@@ -20,9 +18,6 @@ public class TheaterUser extends User{
 	@Column(length = 36, columnDefinition = "varchar(36)", updatable = false, nullable = false)
 	private UUID theaterId;
 
-	private String password;
-
-
 	@ManyToOne()
 	@JoinColumn(name = "book_my_show_id",referencedColumnName = "bookMyShowAppId")
 	private BookMyShowApp bookMyShowApp;
@@ -30,8 +25,9 @@ public class TheaterUser extends User{
 	public TheaterUser() {
 	}
 
-	public TheaterUser(String userName, String email, String phoneNumber, String password) {
+	public TheaterUser(String userName, String email, String phoneNumber, UUID theaterId, BookMyShowApp bookMyShowApp) {
 		super(userName, email, phoneNumber);
-		this.password = password;
+		this.theaterId = theaterId;
+		this.bookMyShowApp = bookMyShowApp;
 	}
 }
