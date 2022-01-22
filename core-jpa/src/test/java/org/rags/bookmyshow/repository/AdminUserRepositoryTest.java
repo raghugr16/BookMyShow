@@ -17,6 +17,7 @@ import org.springframework.test.context.ActiveProfiles;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @ActiveProfiles("dev")
@@ -70,9 +71,9 @@ class AdminUserRepositoryTest extends BaseBookMyShowStub {
 
         logger.info("Total Theaters added = "+saved.getTheaterUsers().size());
         UUID adminId = adminUsers.get(0).getAdminId();
-        Assertions.assertThat(adminUserRepository.findById(adminId)).isNotNull();
-        Assertions.assertThat(adminUserRepository.findById(adminId).toString()).isEqualTo(adminId.toString());
-
+        Optional<AdminUser> result = adminUserRepository.findById(adminId);
+        Assertions.assertThat(result.isPresent()).isTrue();
+        Assertions.assertThat(result.get().getAdminId()).isEqualTo(adminId);
 
     }
 }
