@@ -25,7 +25,7 @@ public class BookMyShowApp extends BaseEntity {
 	private UUID bookMyShowAppId;
 
 	@OneToMany(mappedBy = "bookMyShowApp", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private Collection<Theater> theaterList = new ArrayList<>();
+	private List<Theater> theaterList = new ArrayList<>();
 
 	@OneToMany(mappedBy = "bookMyShowApp", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Collection<TheaterUser> theaterUsers = new ArrayList<>();

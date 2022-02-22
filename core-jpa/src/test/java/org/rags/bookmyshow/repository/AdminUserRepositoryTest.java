@@ -13,20 +13,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.test.context.ActiveProfiles;
 
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-@ActiveProfiles("dev")
+//@ActiveProfiles("dev")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @DataJpaTest
 @ComponentScan(basePackages = {"org.rags.bookmyshow"})
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class AdminUserRepositoryTest extends BaseBookMyShowStub {
-    private static Logger logger = LoggerFactory.getLogger(AdminUserRepositoryTest.class.getName());
+    private final static Logger logger = LoggerFactory.getLogger(AdminUserRepositoryTest.class.getName());
 
     @Autowired
     AdminUserRepository adminUserRepository;
@@ -67,7 +66,7 @@ class AdminUserRepositoryTest extends BaseBookMyShowStub {
 
         Assertions.assertThat(saved.getTheaterList()).isNotNull();
         Collection<Theater> theaters = saved.getTheaterList();
-        Assertions.assertThat(saved.getTheaterList().size()).isEqualTo(3);
+        Assertions.assertThat(theaters.size()).isEqualTo(3);
 
         logger.info("Total Theaters added = "+saved.getTheaterUsers().size());
         UUID adminId = adminUsers.get(0).getAdminId();

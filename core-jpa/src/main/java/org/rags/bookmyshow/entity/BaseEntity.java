@@ -18,8 +18,6 @@ import java.sql.Timestamp;
 @EntityListeners(AuditingEntityListener.class)
 public abstract class BaseEntity implements Serializable {
 
-
-
 	@CreatedDate
 	@Column(updatable = false)
 	private Timestamp createdDate;

@@ -6,7 +6,7 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -20,7 +20,7 @@ public class Audi extends BaseEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Type(type = "org.hibernate.type.UUIDCharType")
-	@Column(length = 36, columnDefinition = "varchar(36)", updatable = false, nullable = false)
+	@Column(name = "audiId", length = 36, columnDefinition = "varchar(36)", updatable = false, nullable = false)
 	private UUID audiId;
 
 	private String audiName;
@@ -33,6 +33,9 @@ public class Audi extends BaseEntity {
 
 	private Integer no_of_seats;
 
+	@OneToMany(mappedBy = "audi",cascade = CascadeType.ALL)
+	private List<Seat> seatList;
+
 	@ManyToOne
 	@JoinTable( name = "theater_audi",
 			joinColumns = @JoinColumn(name = "audiId", referencedColumnName = "audiId"),
@@ -40,5 +43,5 @@ public class Audi extends BaseEntity {
 	private Theater theater;
 
 	@OneToMany(mappedBy = "audi" , cascade = CascadeType.ALL)
-	private Collection<MovieScreenTime> movieScreenTimes = new ArrayList<>();
+	private List<MovieScreen> movieScreenTimes = new ArrayList<>();
 }

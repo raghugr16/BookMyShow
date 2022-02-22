@@ -63,7 +63,7 @@ public class BaseBookMyShowStub extends AbstractBookMyShowStub {
         return theaterUserList;
     }
 
-    public Collection<Theater> createCollectionOfTheater(BookMyShowApp bookMyShowApp){
+    public List<Theater> createCollectionOfTheater(BookMyShowApp bookMyShowApp){
         List<Theater> theaterList = new ArrayList<>();
 
         City banglore = createInitCity();
@@ -72,7 +72,7 @@ public class BaseBookMyShowStub extends AbstractBookMyShowStub {
         City mysore = createInitCity();
         banglore.setAddress(createMysoreAddress());
 
-        Collection<Audi> audiList = createBangloreMultiplexAudi();
+        List<Audi> audiList = createBangloreMultiplexAudi();
 
         Theater bangloreMultiplexTheater = createMultiplexTheater();
         bangloreMultiplexTheater.setCity(banglore);
@@ -96,14 +96,14 @@ public class BaseBookMyShowStub extends AbstractBookMyShowStub {
         return theaterList;
     }
 
-    public Collection<Audi> createVinayakAudi(){
+    public List<Audi> createVinayakAudi(){
         List<Audi> audiList = new ArrayList<>();
         Audi vinayaka = createInitAudi("vinayaka", AudiSize.MIN,AudiType.IMAX, 300);
         audiList.add(vinayaka);
         return audiList;
     }
 
-    public Collection<Audi> createMysoreMiniAudi(){
+    public List<Audi> createMysoreMiniAudi(){
         List<Audi> audiList = new ArrayList<>();
         Audi mysore_mini_audi1 = createInitAudi("mysore_mini_audi1", AudiSize.MIN,AudiType.IMAX, 50);
         Audi mysore_mini_audi2 = createInitAudi("mysore_mini_audi2", AudiSize.MIN,AudiType.IMAX, 50);
@@ -118,7 +118,7 @@ public class BaseBookMyShowStub extends AbstractBookMyShowStub {
         return audiList;
     }
 
-    public Collection<Audi> createBangloreMultiplexAudi(){
+    public List<Audi> createBangloreMultiplexAudi(){
         List<Audi> audiList = new ArrayList<>();
         Audi banglore_multiplex_audi1 = createInitAudi("banglore_multiplex_audi1", AudiSize.MIN,AudiType.IMAX, 50);
         Audi banglore_multiplex_audi2 = createInitAudi("banglore_multiplex_audi2", AudiSize.MIN,AudiType.IMAX, 50);

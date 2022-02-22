@@ -6,7 +6,7 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -28,6 +28,6 @@ public class Movie extends BaseEntity {
 	@Enumerated(EnumType.STRING)
 	private MovieGenres movieGenres;
 
-	@OneToMany(mappedBy = "movie")
-	private Collection<MovieScreenTime> movieScreenTimes = new ArrayList<MovieScreenTime>();
+	@OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
+	private List<MovieScreen> movieScreenTimes = new ArrayList<MovieScreen>();
 }

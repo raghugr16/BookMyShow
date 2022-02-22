@@ -6,7 +6,6 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
@@ -27,7 +26,7 @@ public class Theater extends BaseEntity {
 	private TheaterType theaterType;
 
 	@OneToMany(mappedBy = "theater", cascade = CascadeType.ALL)
-	private Collection<Audi> audiList = new ArrayList<Audi>();
+	private List<Audi> audiList = new ArrayList<Audi>();
 
 	@ManyToOne
 	@JoinTable(name = "book_my_show_theater",
