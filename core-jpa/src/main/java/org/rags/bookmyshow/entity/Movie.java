@@ -28,6 +28,6 @@ public class Movie extends BaseEntity {
 	@Enumerated(EnumType.STRING)
 	private MovieGenres movieGenres;
 
-	@OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "movie", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<MovieScreen> movieScreenTimes = new ArrayList<MovieScreen>();
 }

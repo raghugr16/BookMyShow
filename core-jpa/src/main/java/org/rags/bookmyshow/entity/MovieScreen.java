@@ -34,7 +34,7 @@ public class MovieScreen extends BaseEntity {
 	@Column(length = 36, columnDefinition = "varchar(36)", updatable = false, nullable = false)
 	private UUID movieScreenTimeId;
 
-	@ManyToOne()
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinTable(name = "present_movie_screen",
 			joinColumns = @JoinColumn(name = "movie_screen_id"),
 			inverseJoinColumns = @JoinColumn(name = "movie_id")
@@ -47,7 +47,7 @@ public class MovieScreen extends BaseEntity {
 	private String movieScreenTable;
 	private String movieScreenShortName;
 
-	@ManyToOne
+	@ManyToOne()
 	@JoinTable(name = "audi_movie_screening",
 			joinColumns = @JoinColumn(name = "movie_screen_time_Id", referencedColumnName = "movieScreenTimeId"),
 			inverseJoinColumns = @JoinColumn(name = "audi_id",referencedColumnName = "audiId"))

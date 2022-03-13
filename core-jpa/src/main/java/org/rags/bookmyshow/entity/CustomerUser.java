@@ -18,7 +18,7 @@ public class CustomerUser extends User{
 	@Column(length = 36, columnDefinition = "varchar(36)", updatable = false, nullable = false)
 	private UUID customerId;
 
-	@ManyToOne()
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "book_my_show_id")
 	private BookMyShowApp bookMyShowApp;
 

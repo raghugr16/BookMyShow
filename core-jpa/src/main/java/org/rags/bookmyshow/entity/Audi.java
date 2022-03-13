@@ -36,12 +36,12 @@ public class Audi extends BaseEntity {
 	@OneToMany(mappedBy = "audi",cascade = CascadeType.ALL)
 	private List<Seat> seatList;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinTable( name = "theater_audi",
 			joinColumns = @JoinColumn(name = "audiId", referencedColumnName = "audiId"),
 			inverseJoinColumns = @JoinColumn(name = "theaterId", referencedColumnName = "theaterId"))
 	private Theater theater;
 
-	@OneToMany(mappedBy = "audi" , cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "audi" , cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<MovieScreen> movieScreenTimes = new ArrayList<>();
 }

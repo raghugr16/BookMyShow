@@ -19,7 +19,7 @@ public class AdminUser extends User{
 	private UUID adminId;
 
 
-	@ManyToOne()
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "book_my_show_id")
 	private BookMyShowApp bookMyShowApp;
 

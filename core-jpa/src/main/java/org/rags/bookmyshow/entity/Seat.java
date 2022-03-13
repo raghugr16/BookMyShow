@@ -28,7 +28,7 @@ public class Seat {
 
     private SeatStatus seatStatus;
 
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "audi_id", nullable = false)
     private Audi audi;
 

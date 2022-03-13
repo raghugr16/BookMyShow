@@ -6,7 +6,7 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -23,13 +23,13 @@ public class City extends BaseEntity {
 	@Embedded
 	private Address address;
 
-	@OneToMany(mappedBy = "city", cascade = CascadeType.ALL)
-	private Collection<Theater> theaters = new ArrayList<>();
+	@OneToMany(mappedBy = "city", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Theater> theaters = new ArrayList<>();
 
 	public City() {
 	}
 
-	public City(UUID cityId, Address address, Collection<Theater> theaters) {
+	public City(UUID cityId, Address address, List<Theater> theaters) {
 		this.cityId = cityId;
 		this.address = address;
 		this.theaters = theaters;
