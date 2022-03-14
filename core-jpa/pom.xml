@@ -7,7 +7,9 @@
 		<artifactId>bookmyshow</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
+	<groupId>org.rags.opensource.bookmyshow</groupId>
 	<artifactId>core-jpa</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
 
 	<dependencies>
 		<dependency>

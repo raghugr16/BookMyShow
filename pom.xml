@@ -20,8 +20,6 @@
 		<module>core-model</module>
 		<module>core-jpa</module>
 		<module>core-service</module>
-		<module>notification</module>
-		<module>authorization</module>
 	</modules>
 
 	<properties>
